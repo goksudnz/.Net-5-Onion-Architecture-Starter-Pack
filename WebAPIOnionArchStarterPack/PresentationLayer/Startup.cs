@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using BusinessLogicLayer;
 using DataAccessLayer;
 using Domain.Entities;
 using Domain.Models.General;
@@ -65,7 +66,7 @@ namespace PresentationLayer
                 };
             });
             #endregion
-            
+
             #region Swagger Configurations
             services.AddSwaggerGen(c =>
             {
@@ -104,6 +105,8 @@ namespace PresentationLayer
             #endregion
 
             services.AddDataAccessLayerDependencies();
+            services.AddBusinessLayerDependencies();
+            services.AddAuthorizationHandlers();
 
         }
 
@@ -118,12 +121,16 @@ namespace PresentationLayer
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseCors(options => options.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+                
+                // if using fallback router you can use the given code below.
+                // endpoints.MapFallbackToController("spa/{controller=Fallback}/{action=Index}", "Index", "Fallback");
+            });
         }
     }
 }

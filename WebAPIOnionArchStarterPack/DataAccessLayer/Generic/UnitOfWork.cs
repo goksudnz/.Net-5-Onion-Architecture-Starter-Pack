@@ -21,7 +21,7 @@ namespace DataAccessLayer.Generic
         /// <exception cref="ArgumentNullException"></exception>
         public UnitOfWork(ApplicationDbContext context, IHttpContextAccessor accessor)
         {
-            _context = context ?? throw new ArgumentNullException(DALConstants.DatabaseConstants.DbContextNullException);
+            _context = context ?? throw new ArgumentNullException(DalConstants.DatabaseConstants.DbContextNullException);
             _accessor = accessor;
         }
         

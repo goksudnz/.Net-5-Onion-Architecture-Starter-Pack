@@ -32,7 +32,7 @@ namespace DataAccessLayer.Generic
         /// <param name="accessor">Http Context Accessor</param>
         public GenericRepository(ApplicationDbContext context, IHttpContextAccessor accessor)
         {
-            _context = context ?? throw new ArgumentNullException(DALConstants.DatabaseConstants.DbContextNullException);
+            _context = context ?? throw new ArgumentNullException(DalConstants.DatabaseConstants.DbContextNullException);
             _userName = accessor.HttpContext?.User?.Identity?.Name;
             _userId = string.IsNullOrEmpty(_userName)
                 ? string.Empty
@@ -161,7 +161,7 @@ namespace DataAccessLayer.Generic
         public void Insert(TEntity entity)
         {
             if (entity is null)
-                throw new ArgumentNullException(string.Format(DALConstants.DatabaseConstants.EntityNullException, nameof(entity)));
+                throw new ArgumentNullException(string.Format(DalConstants.DatabaseConstants.EntityNullException, nameof(entity)));
 
             if (entity is IHistoryPersisted)
             {
@@ -184,16 +184,16 @@ namespace DataAccessLayer.Generic
         public void Update(TEntity entity)
         {
             if (entity is null)
-                throw new ArgumentNullException(string.Join(DALConstants.DatabaseConstants.EntityNullException, nameof(entity)));
+                throw new ArgumentNullException(string.Join(DalConstants.DatabaseConstants.EntityNullException, nameof(entity)));
 
             if (_context.Entry(entity).State == EntityState.Detached) _dbSet.Attach(entity);
 
             _context.Entry(entity).State = EntityState.Modified;
 
-            if (entity.GetType().GetProperty(DALConstants.DatabaseConstants.HistoryPersistedCreatedBy) != null)
-                _context.Entry(entity).Property(DALConstants.DatabaseConstants.HistoryPersistedCreatedBy).IsModified = false;
-            if (entity.GetType().GetProperty(DALConstants.DatabaseConstants.HistoryPersistedCreateDate) != null)
-                _context.Entry(entity).Property(DALConstants.DatabaseConstants.HistoryPersistedCreateDate).IsModified = false;
+            if (entity.GetType().GetProperty(DalConstants.DatabaseConstants.HistoryPersistedCreatedBy) != null)
+                _context.Entry(entity).Property(DalConstants.DatabaseConstants.HistoryPersistedCreatedBy).IsModified = false;
+            if (entity.GetType().GetProperty(DalConstants.DatabaseConstants.HistoryPersistedCreateDate) != null)
+                _context.Entry(entity).Property(DalConstants.DatabaseConstants.HistoryPersistedCreateDate).IsModified = false;
 
             if (entity is IHistoryPersisted)
                 DataHistoryCreator(entity, nameof(Update));
@@ -206,7 +206,7 @@ namespace DataAccessLayer.Generic
         public void InsertRange(List<TEntity> entities)
         {
             if (entities is null)
-                throw new ArgumentNullException(string.Format(DALConstants.DatabaseConstants.EntityNullException, nameof(entities)));
+                throw new ArgumentNullException(string.Format(DalConstants.DatabaseConstants.EntityNullException, nameof(entities)));
 
             if (!entities.Any()) return;
             
@@ -234,7 +234,7 @@ namespace DataAccessLayer.Generic
         public void UpdateRange(List<TEntity> entities)
         {
             if (entities is null)
-                throw new ArgumentNullException(string.Format(DALConstants.DatabaseConstants.EntityNullException,
+                throw new ArgumentNullException(string.Format(DalConstants.DatabaseConstants.EntityNullException,
                     nameof(entities)));
 
             if (!entities.Any()) return;
@@ -268,12 +268,12 @@ namespace DataAccessLayer.Generic
         public void Remove(TEntity entity)
         {
             if (entity is null)
-                throw new ArgumentNullException(string.Format(DALConstants.DatabaseConstants.EntityNullException, nameof(entity)));
+                throw new ArgumentNullException(string.Format(DalConstants.DatabaseConstants.EntityNullException, nameof(entity)));
 
             // if entity configure for soft delete, then entity is updated as deleted.
             if (entity is ISoftDelete)
             {
-                entity.GetType().GetProperty(DALConstants.DatabaseConstants.IsSoftDelete)?.SetValue(entity, true);
+                entity.GetType().GetProperty(DalConstants.DatabaseConstants.IsSoftDelete)?.SetValue(entity, true);
 
                 Update(entity);
                 return;
@@ -294,7 +294,7 @@ namespace DataAccessLayer.Generic
         public void RemoveRange(List<TEntity> entities)
         {
             if (entities is null)
-                throw new ArgumentNullException(string.Format(DALConstants.DatabaseConstants.EntityNullException, nameof(entities)));
+                throw new ArgumentNullException(string.Format(DalConstants.DatabaseConstants.EntityNullException, nameof(entities)));
             
             
             if (!entities.Any()) return;
@@ -304,7 +304,7 @@ namespace DataAccessLayer.Generic
             {
                 foreach (var entity in entities)
                 {
-                    var updatableEntity = entity.GetType().GetProperty(DALConstants.DatabaseConstants.IsSoftDelete);
+                    var updatableEntity = entity.GetType().GetProperty(DalConstants.DatabaseConstants.IsSoftDelete);
                     updatableEntity?.SetValue(updatableEntity, true);
                 }
 

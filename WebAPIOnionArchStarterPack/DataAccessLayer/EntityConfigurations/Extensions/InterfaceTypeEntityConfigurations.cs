@@ -12,6 +12,6 @@ namespace DataAccessLayer.EntityConfigurations.Extensions
         /// <param name="builder"></param>
         /// <typeparam name="T"></typeparam>
         public static void AddHistoryPersistedEntityConfigurations<T>(this EntityTypeBuilder<T> builder) where T : class, new()
-            => builder.Property(DALConstants.DatabaseConstants.HistoryPersistedCreatedBy).HasMaxLength(20);
+            => builder.Property(DalConstants.DatabaseConstants.HistoryPersistedCreatedBy).HasMaxLength(20);
     }
 }
