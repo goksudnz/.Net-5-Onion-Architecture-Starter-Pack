@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAcce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{384CDE5F-3E3B-483F-A0BC-AAD610B32556}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{54F55E08-8806-4BBE-94F8-1409B9C4F4E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{384CDE5F-3E3B-483F-A0BC-AAD610B32556}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{384CDE5F-3E3B-483F-A0BC-AAD610B32556}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{384CDE5F-3E3B-483F-A0BC-AAD610B32556}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F55E08-8806-4BBE-94F8-1409B9C4F4E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F55E08-8806-4BBE-94F8-1409B9C4F4E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F55E08-8806-4BBE-94F8-1409B9C4F4E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F55E08-8806-4BBE-94F8-1409B9C4F4E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
