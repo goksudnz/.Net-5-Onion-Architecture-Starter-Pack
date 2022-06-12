@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using PresentationLayer.Filters;
 
 namespace PresentationLayer
 {
@@ -41,7 +42,8 @@ namespace PresentationLayer
             // Adding filters
             services.AddMvc().AddMvcOptions(option =>
             {
-                // TODO: we are going to add global filters here.
+                option.Filters.Add(new GlobalExceptionFilter());
+                option.Filters.Add(new ActionAuthorizationFilter());
             });
             
             // JWT
@@ -107,7 +109,7 @@ namespace PresentationLayer
             services.AddDataAccessLayerDependencies();
             services.AddBusinessLayerDependencies();
             services.AddAuthorizationHandlers();
-
+            services.AddPresentationLayerDependencies();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

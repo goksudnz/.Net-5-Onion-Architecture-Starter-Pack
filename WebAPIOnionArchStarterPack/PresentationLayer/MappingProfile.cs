@@ -1,6 +1,8 @@
 // Copyrights(c) Charqe.io. All rights reserved.
 
 using AutoMapper;
+using Domain.Entities;
+using PresentationLayer.ViewModels;
 
 namespace PresentationLayer
 {
@@ -8,7 +10,7 @@ namespace PresentationLayer
     {
         public MappingProfile()
         {
-            // TODO: We are going to add mappings here.
+            CreateMap<RegisterVM, AppUser>().ReverseMap();
         }
     }
 }

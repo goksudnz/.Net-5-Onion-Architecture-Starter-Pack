@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{54F55E08-8806-4BBE-94F8-1409B9C4F4E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{5FAE4F0F-D01A-42DF-A0AD-AF857459E5BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{54F55E08-8806-4BBE-94F8-1409B9C4F4E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54F55E08-8806-4BBE-94F8-1409B9C4F4E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54F55E08-8806-4BBE-94F8-1409B9C4F4E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FAE4F0F-D01A-42DF-A0AD-AF857459E5BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FAE4F0F-D01A-42DF-A0AD-AF857459E5BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FAE4F0F-D01A-42DF-A0AD-AF857459E5BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FAE4F0F-D01A-42DF-A0AD-AF857459E5BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
